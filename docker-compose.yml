@@ -1,35 +1,30 @@
 version: "3.8"
 services:
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_USER=${DATABASE_USERNAME}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - db_pg_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5434:5432"
   web:
       build: .
       command: bash -c "rm -f tmp/pids/server.pid && rails s -b '0.0.0.0'"
+      environment:
+        - RAILS_ENV=${RAILS_ENV}
+        - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+        - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+        - DATABASE_URL=postgres://postgres:${DATABASE_PASSWORD}@db:5432/postgres
       volumes:
-        - ".:/usr/src/app"
+        - app-storage:/rails/storage
       ports:
         - "3000:3000"
       depends_on:
         - db
-      environment:
-      - DATABASE_URL=postgres://postgres:${DATABASE_PASSWORD}@db:5432/postgres
-  db:
-    image: postgres:latest
-    environment:
-      # Sets the superuser password for PostgreSQL
-      # POSTGRES_DB: diffusion_prompts_development
-      # POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
-    volumes:
-      # Named volume to persist database data outside of container.
-      # Format is "named_volume:path/in/container"
-      - db_pg_data:/var/lib/postgresql/data
-      # Host mount for one-time initialization.
-      # Format is "./path/on/host:/path/in/container"
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-    ports:
-      # Map to something other than default 5432 on host in case Postgres
-      # is also running natively on host.
-      # Format is "host:container"
-      - "5434:5432"
-
 volumes:
   db_pg_data:
+  app-storage:

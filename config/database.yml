@@ -4,14 +4,14 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV["DATABASE_USERNAME"] %>
-  password: <%= ENV["DATABASE_PASSWORD"] %>
-  host: <%= ENV["DATABASE_HOST"] %>
+  host: <%= ENV["POSTGRES_HOST"] %>
   port: 5432
 
 development:
   <<: *default
   database: diffusion_prompts_development
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -46,6 +46,8 @@ development:
 test:
   <<: *default
   database: diffusion_prompts_test
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -69,6 +71,6 @@ test:
 #
 production:
   <<: *default
-  database: diffusion_prompts_production
-  username: diffusion_prompts
-  password: <%= ENV["DIFFUSION_PROMPTS_DATABASE_PASSWORD"] %>
+  database: <%= ENV["PG_DB_NAME"] %>
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
