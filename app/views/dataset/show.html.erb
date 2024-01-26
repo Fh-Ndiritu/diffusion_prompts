@@ -1,19 +1,22 @@
 
-<div>
+<div class=" w-full">
   <div class="shadow rounded p-4 mb-6 bg-violet-50">
     <h1 class="font-bold text-4xl my-3"><%= @dataset.name %></h1>
     <div class="flex justify-between">
       <div><span class=" font-bold text-base">Language:</span> <span class="uppercase font-bold text-xs text-gray-500 "><%= @dataset.language %></span></div>
-      <div>        
+      <div data-controller="dataset" id ="dataset_splits">        
           <span class="font-bold text-base">Splits: </span>
-          <span class="inline text-gray-500 text-xs uppercase font-bold">
+          <span class="inline text-gray-500 text-xs uppercase font-bold" data-action= "click->dataset#toggleActive">
+              <%= link_to "All", dataset_path(@dataset), data: {turbo_frame: "prompts", dataset_target: "splitLink"} %>
+          </span>
+          <span class="inline text-gray-500 text-xs uppercase font-bold"  data-action= "click->dataset#toggleActive">
             <% if @dataset.splits.training.present? %>
-                  <%= link_to "Training", split_path(@dataset.splits.training.first) %>
+                  <%= link_to "Training", split_path(@dataset.splits.training.first), data: {turbo_frame: "prompts", dataset_target: "splitLink" } %>
             <% end %>
           </span>
-          <span class="inline text-gray-500 text-xs uppercase font-bold">
+          <span class="inline text-gray-500 text-xs uppercase font-bold"  data-action= "click->dataset#toggleActive">
             <% if @dataset.splits.testing.present? %>
-                  <%= link_to "Testing", split_path(@dataset.splits.testing.first ) %>
+                  <%= link_to "Testing", split_path(@dataset.splits.testing.first ), data: {turbo_frame: "prompts", dataset_target: "splitLink" } %>
             <% end %>
             </span>
 
@@ -23,12 +26,17 @@
 
   </div>
 
-  <div id="prompts" class="min-w-full overflow-y-scroll rounded-lg bg-slate-300 border-4 border-slate-300  p-4 my-4">
-    <%= render @prompts %>
-  </div>
-    <div class="flex justify-center items-center py-4">
-      <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
-  </div>
+    <%= turbo_frame_tag "prompts" do %>
+        <h2 class="font-bold text-xl text-center">All prompts</h2>
+        <div id="prompts" class="w-full overflow-y-scroll rounded-lg bg-slate-300 border-4 border-slate-300  p-4 my-4">
+          <%= render @prompts %>
+        </div>
+        <div class="flex justify-center items-center py-4">
+            <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+        </div>
+    <% end %>
+
+
 </div>
   
 

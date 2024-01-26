@@ -98,3 +98,7 @@
 #prompts{
   height: 80vh;
 }
+
+#dataset_splits .active{
+  @apply text-red-400 ;
+}

@@ -7,9 +7,11 @@
     <h1 class="font-bold text-4xl">All Prompts</h1>
   </div>
 
-  <div id="prompts" class="min-w-full overflow-y-scroll rounded-lg bg-slate-300 border-4 border-slate-300  p-4 my-4">
-    <%= render @prompts %>
-  </div>
+    <%= turbo_frame_tag "prompts" do %>
+        <div id="prompts" class="min-w-full overflow-y-scroll rounded-lg bg-slate-300 border-4 border-slate-300  p-4 my-4">
+          <%= render @prompts %>
+        </div>
+    <% end %>
     <div class="flex justify-center items-center py-4">
         <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
     </div>
