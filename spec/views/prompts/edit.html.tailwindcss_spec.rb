@@ -6,8 +6,6 @@ RSpec.describe "prompts/edit", type: :view do
       split: nil,
       row_idx: 1,
       content: "MyText",
-      truncated_cells: "MyString",
-      partial: false
     )
   }
 
@@ -26,9 +24,6 @@ RSpec.describe "prompts/edit", type: :view do
 
       assert_select "textarea[name=?]", "prompt[content]"
 
-      assert_select "input[name=?]", "prompt[truncated_cells]"
-
-      assert_select "input[name=?]", "prompt[partial]"
     end
   end
 end

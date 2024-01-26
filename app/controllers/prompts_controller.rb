@@ -3,7 +3,7 @@ class PromptsController < ApplicationController
 
   # GET /prompts or /prompts.json
   def index
-    @prompts = Prompt.all
+    @prompts = Prompt.limit(20)
   end
 
   # GET /prompts/1 or /prompts/1.json
@@ -65,6 +65,6 @@ class PromptsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def prompt_params
-      params.require(:prompt).permit(:split_id, :row_idx, :content, :truncated_cells, :partial)
+      params.require(:prompt).permit(:split_id, :row_idx, :content)
     end
 end

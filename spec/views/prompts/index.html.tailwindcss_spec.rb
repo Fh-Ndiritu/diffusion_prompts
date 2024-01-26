@@ -7,15 +7,11 @@ RSpec.describe "prompts/index", type: :view do
         split: nil,
         row_idx: 2,
         content: "MyText",
-        truncated_cells: "Truncated Cells",
-        partial: false
       ),
       Prompt.create!(
         split: nil,
         row_idx: 2,
         content: "MyText",
-        truncated_cells: "Truncated Cells",
-        partial: false
       )
     ])
   end

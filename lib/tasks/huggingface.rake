@@ -39,8 +39,6 @@ namespace :huggingface do
         split.prompts.create(
             row_idx: row["Row_idx"], 
             content: row["Prompt"], 
-            truncated_cells: nil,
-            partial: false
         )
       end
 

@@ -6,8 +6,6 @@ RSpec.describe "prompts/show", type: :view do
       split: nil,
       row_idx: 2,
       content: "MyText",
-      truncated_cells: "Truncated Cells",
-      partial: false
     ))
   end
 

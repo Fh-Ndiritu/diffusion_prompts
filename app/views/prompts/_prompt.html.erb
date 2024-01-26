@@ -14,15 +14,6 @@
     <%= prompt.content %>
   </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Truncated cells:</strong>
-    <%= prompt.truncated_cells %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Partial:</strong>
-    <%= prompt.partial %>
-  </p>
 
   <% if action_name != "show" %>
     <%= link_to "Show this prompt", prompt, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
