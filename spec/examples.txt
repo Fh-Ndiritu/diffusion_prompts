@@ -1,13 +1,17 @@
-example_id                           | status | run_time        |
------------------------------------- | ------ | --------------- |
-./spec/models/dataset_spec.rb[1:1:1] | passed | 0.10001 seconds |
-./spec/models/dataset_spec.rb[1:1:2] | passed | 0.00144 seconds |
-./spec/models/dataset_spec.rb[1:2:1] | passed | 0.33895 seconds |
-./spec/models/dataset_spec.rb[1:2:2] | passed | 0.00171 seconds |
-./spec/models/dataset_spec.rb[1:2:3] | passed | 0.00224 seconds |
-./spec/models/prompt_spec.rb[1:1:1]  | passed | 0.09982 seconds |
-./spec/models/prompt_spec.rb[1:2:1]  | passed | 0.6642 seconds  |
-./spec/models/prompt_spec.rb[1:2:2]  | passed | 0.00299 seconds |
-./spec/models/split_spec.rb[1:1:1]   | passed | 0.0015 seconds  |
-./spec/models/split_spec.rb[1:1:2]   | passed | 0.00057 seconds |
-./spec/models/split_spec.rb[1:2]     | passed | 0.42308 seconds |
+example_id                             | status | run_time        |
+-------------------------------------- | ------ | --------------- |
+./spec/features/dataset_spec.rb[1:1:1] | failed | 0.37524 seconds |
+./spec/features/dataset_spec.rb[1:1:2] | failed | 0.01315 seconds |
+./spec/features/dataset_spec.rb[1:2:1] | failed | 0.07742 seconds |
+./spec/features/dataset_spec.rb[1:2:2] | failed | 0.0958 seconds  |
+./spec/models/dataset_spec.rb[1:1:1]   | passed | 0.10001 seconds |
+./spec/models/dataset_spec.rb[1:1:2]   | passed | 0.00144 seconds |
+./spec/models/dataset_spec.rb[1:2:1]   | passed | 0.33895 seconds |
+./spec/models/dataset_spec.rb[1:2:2]   | passed | 0.00171 seconds |
+./spec/models/dataset_spec.rb[1:2:3]   | passed | 0.00224 seconds |
+./spec/models/prompt_spec.rb[1:1:1]    | passed | 0.09982 seconds |
+./spec/models/prompt_spec.rb[1:2:1]    | passed | 0.6642 seconds  |
+./spec/models/prompt_spec.rb[1:2:2]    | passed | 0.00299 seconds |
+./spec/models/split_spec.rb[1:1:1]     | passed | 0.0015 seconds  |
+./spec/models/split_spec.rb[1:1:2]     | passed | 0.00057 seconds |
+./spec/models/split_spec.rb[1:2]       | passed | 0.42308 seconds |
