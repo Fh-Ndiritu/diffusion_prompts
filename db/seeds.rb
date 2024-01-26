@@ -1,5 +1,6 @@
 
 
 3.times do 
-    FactoryBot.create(:dataset)
+    dataset = FactoryBot.create(:dataset)
+    FactoryBot.create(:split, dataset: dataset)
 end

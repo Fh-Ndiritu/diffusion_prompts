@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :split do
-    name { "MyString" }
-    dataset { nil }
+    name { ["train", "test"].sample }
+    dataset 
   end
 end
