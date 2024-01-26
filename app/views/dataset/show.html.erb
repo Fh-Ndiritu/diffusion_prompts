@@ -1,11 +1,22 @@
 <div>
-   <div class="bg-gray-200"></div>
+   <div class="bg-gray-200">
      <h1 class="font-bold text-4xl"><%= @dataset.name %></h1>
      <div class="justify-between">
       <div>Language: <%= @dataset.language %></div>
-      <div>Switch Spits: 
-        <%# <%= link_to split %> %>
+      <div>Switch Splits: 
+        <% if @dataset.splits.training.present? %>
+            <%= link_to "Training data", split_path(@dataset.splits.training.first) %>
+        <% end %>
+        <% if @dataset.splits.testing.present? %>
+              <%= link_to "Testing data", split_path(@dataset.splits.testing.first ) %>
+        <% end %>
+
       </div>
+     </div>
+     </div>
+
+     <div>
+     <%= render @prompts %>
      </div>
 
 </div>

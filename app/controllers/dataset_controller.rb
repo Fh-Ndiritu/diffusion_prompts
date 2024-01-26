@@ -1,7 +1,7 @@
 class DatasetController < ApplicationController
   before_action :set_dataset
   def show
-    prompts = @dataset.prompts.take(20)
+    @prompts = @dataset.prompts.take(20)
   end
 
 

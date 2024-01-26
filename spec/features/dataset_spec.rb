@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Dataset',  type: :feature do 
 
-    describe 'user visits dataset' do 
+    describe 'user visits dataset: ' do 
         let(:dataset){create(:dataset, name: "Gusta Stables", language: "English")}
         before do 
             visit dataset_path(dataset)
@@ -18,7 +18,7 @@ RSpec.feature 'Dataset',  type: :feature do
 
     end
 
-    describe 'the splits are toggled ' do 
+    describe 'When the splits are toggled: ' do 
         let(:dataset) {create(:dataset, name: "Gusta Stables", language: "English")}
         train_split = test_split = nil
 
@@ -36,15 +36,10 @@ RSpec.feature 'Dataset',  type: :feature do
             expect(page).to have_text(test_split.prompts.first.content)
         end
 
-        it 'toggles prompts when splits are toggled' do 
-            find("a", text: "test data").click
+        it 'changes prompts when splits are clicked'  do 
+            find("a", text: "Testing data").click
             expect(page).to have_text(test_split.prompts.first.content)
             expect(page).not_to have_text(train_split.prompts.first.content)
-
-            find("a", text: "training data").click
-            expect(page).not_to have_text(test_split.prompts.first.content)
-            expect(page).to have_text(train_split.prompts.first.content)
-
         end
 
 

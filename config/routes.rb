@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  
+  get 'split/:id', to: "split#show", as: :split
   get 'dataset/:id', to: "dataset#show", as: :dataset
+
   resources :prompts
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
