@@ -1,5 +1,8 @@
-example_id                           | status | run_time        |
------------------------------------- | ------ | --------------- |
-./spec/models/dataset_spec.rb[1:2:1] | passed | 0.54782 seconds |
-./spec/models/dataset_spec.rb[1:2:2] | passed | 0.00268 seconds |
-./spec/models/dataset_spec.rb[1:2:3] | passed | 0.00275 seconds |
+example_id                           | status  | run_time        |
+------------------------------------ | ------- | --------------- |
+./spec/models/dataset_spec.rb[1:2:1] | passed  | 0.54782 seconds |
+./spec/models/dataset_spec.rb[1:2:2] | passed  | 0.00268 seconds |
+./spec/models/dataset_spec.rb[1:2:3] | passed  | 0.00275 seconds |
+./spec/models/split_spec.rb[1:1:1]   | passed  | 0.00166 seconds |
+./spec/models/split_spec.rb[1:1:2]   | pending | 0.00002 seconds |
+./spec/models/split_spec.rb[1:2]     | passed  | 0.37931 seconds |

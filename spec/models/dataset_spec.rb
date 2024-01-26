@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Dataset, type: :model do
   describe 'it has associations' do 
-    #splits
-    #prompts
+      it 'has many splits' do 
+      association = described_class.reflect_on_association(:splits)
+      expect(association.macro).to eq(:has_many)
+    end
 
   end
 
