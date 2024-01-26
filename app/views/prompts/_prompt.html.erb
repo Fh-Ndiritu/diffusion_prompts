@@ -1,23 +1,10 @@
-<div id="<%= dom_id prompt %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Split:</strong>
-    <%= prompt.split_id %>
-  </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Row idx:</strong>
-    <%= prompt.row_idx %>
-  </p>
+<% bg_color =  prompt.id%2==0 ? "bg-gray-100" : "bg-white" %>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Content:</strong>
-    <%= prompt.content %>
-  </p>
-
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this prompt", prompt, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this prompt", edit_prompt_path(prompt), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+<div class="<%= bg_color %> border-b py-4  px-2 " id="<%= dom_id prompt %>">
+  <%= prompt.content %>
 </div>
+
+
+
+

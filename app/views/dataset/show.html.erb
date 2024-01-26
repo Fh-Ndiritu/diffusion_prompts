@@ -1,22 +1,41 @@
+
 <div>
-   <div class="bg-gray-200">
-     <h1 class="font-bold text-4xl"><%= @dataset.name %></h1>
-     <div class="justify-between">
-      <div>Language: <%= @dataset.language %></div>
-      <div>Switch Splits: 
-        <% if @dataset.splits.training.present? %>
-            <%= link_to "Training data", split_path(@dataset.splits.training.first) %>
-        <% end %>
-        <% if @dataset.splits.testing.present? %>
-              <%= link_to "Testing data", split_path(@dataset.splits.testing.first ) %>
-        <% end %>
+  <div class="bg-blue-100 shadow rounded p-4 mb-6">
+    <h1 class="font-bold text-4xl my-3"><%= @dataset.name %></h1>
+    <div class="flex justify-between">
+      <div><span class=" font-bold text-base">Language:</span> <span class="uppercase font-bold text-xs text-gray-500 "><%= @dataset.language %></span></div>
+      <div>        
+          <span class="font-bold text-base">Splits: </span>
+          <span class="inline text-gray-500 text-xs uppercase font-bold">
+            <% if @dataset.splits.training.present? %>
+                  <%= link_to "Training", split_path(@dataset.splits.training.first) %>
+            <% end %>
+          </span>
+          <span class="inline text-gray-500 text-xs uppercase font-bold">
+            <% if @dataset.splits.testing.present? %>
+                  <%= link_to "Testing", split_path(@dataset.splits.testing.first ) %>
+            <% end %>
+            </span>
+
 
       </div>
-     </div>
-     </div>
+    </div>
 
-     <div>
-     <%= render @prompts %>
-     </div>
+  </div>
 
+  <div><%= render @prompts %></div>
 </div>
+  
+
+
+      <div class=" flex align-middle justify-between">
+      <div class=""></div>
+      <div class=""> 
+
+          <div class="uppercase font-bold text-xs text-gray-500 ">
+           
+          </div>
+      </div>
+      </div>
+    </div>
+
