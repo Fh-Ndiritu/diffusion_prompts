@@ -76,3 +76,7 @@ group :test do
 end
 
 gem "pagy", "~> 6.4"
+
+gem "elasticsearch", "~> 8.12"
+
+gem "searchkick", "~> 5.3"
