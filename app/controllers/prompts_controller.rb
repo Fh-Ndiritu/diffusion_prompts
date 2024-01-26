@@ -2,7 +2,7 @@ class PromptsController < ApplicationController
 
   # GET /prompts or /prompts.json
   def index
-    @prompts = Prompt.limit(20)
+    @pagy, @prompts = pagy(Prompt.all)
   end
 
   private

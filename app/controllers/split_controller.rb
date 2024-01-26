@@ -1,7 +1,7 @@
 class SplitController < ApplicationController
   before_action :set_split
   def show
-    @prompts = @split.prompts.take(20)
+    @pagy, @prompts = pagy(@split.prompts)
   end
 
 
