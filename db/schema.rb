@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_26_070249) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_26_072624) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_26_070249) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "prompts", force: :cascade do |t|
+    t.bigint "split_id", null: false
+    t.integer "row_idx"
+    t.text "content"
+    t.string "truncated_cells"
+    t.boolean "partial", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["split_id"], name: "index_prompts_on_split_id"
+  end
+
   create_table "splits", force: :cascade do |t|
     t.string "name"
     t.bigint "dataset_id", null: false
@@ -31,5 +42,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_26_070249) do
     t.index ["dataset_id"], name: "index_splits_on_dataset_id"
   end
 
+  add_foreign_key "prompts", "splits"
   add_foreign_key "splits", "datasets"
 end

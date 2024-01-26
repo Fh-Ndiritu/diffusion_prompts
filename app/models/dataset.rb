@@ -4,5 +4,6 @@ class Dataset < ApplicationRecord
     validates :language, presence: true
 
     has_many :splits
+    has_many :prompts, through: :splits
     
 end

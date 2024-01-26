@@ -7,7 +7,7 @@ RSpec.describe Split, type: :model do
       expect(association.macro).to eq(:belongs_to)
     end
 
-    xit 'it has many prompts' do 
+    it 'it has many prompts' do 
       association = described_class.reflect_on_association(:prompts)
       expect(association.macro).to eq(:has_many)
     end
