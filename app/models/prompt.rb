@@ -4,4 +4,14 @@ class Prompt < ApplicationRecord
   validates :content, presence: true 
 
   searchkick
+
+  after_save_commit :reindex_search
+
+
+
+  private 
+
+  def reindex_search
+    reindex
+  end
 end
