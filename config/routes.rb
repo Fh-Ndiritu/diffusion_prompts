@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
   get 'split/:id', to: "split#show", as: :split
   get 'dataset/:id', to: "dataset#show", as: :dataset
+
+  get 'search_prompts', to: "search#prompts", as: :search_prompts
   resources :prompts, only: [:index]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

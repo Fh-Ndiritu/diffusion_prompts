@@ -26,8 +26,8 @@ RSpec.feature 'Dataset',  type: :feature do
             train_split = dataset.splits.create(name: "train")
             test_split = dataset.splits.create(name: "test")
 
-            4.times{FactoryBot.create(:prompt, split: train_split)}
-            4.times{FactoryBot.create(:prompt, split: test_split)}
+            4.times{create(:prompt, split: train_split)}
+            4.times{create(:prompt, split: test_split)}
             visit dataset_path(dataset)
         end
 

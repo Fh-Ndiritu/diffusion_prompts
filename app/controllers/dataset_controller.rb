@@ -2,6 +2,7 @@ class DatasetController < ApplicationController
   before_action :set_dataset
   def show
     @pagy, @prompts = pagy(@dataset.prompts)
+    @splits = @dataset.splits.pluck(:name).map(&:capitalize)
   end
 
 

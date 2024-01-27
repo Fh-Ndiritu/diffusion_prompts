@@ -25,7 +25,7 @@
     </div>
 
   </div>
-
+    <%= render "layouts/search", locals: {splits: @splits} %>
     <%= turbo_frame_tag "prompts" do %>
         <h2 class="font-bold text-xl text-center">All prompts</h2>
         <div id="prompts" class="w-full overflow-y-scroll rounded-lg bg-slate-300 border-4 border-slate-300  p-4 my-4">

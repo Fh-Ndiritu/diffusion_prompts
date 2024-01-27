@@ -2,6 +2,7 @@ class SplitController < ApplicationController
   before_action :set_split
   def show
     @pagy, @prompts = pagy(@split.prompts)
+    @splits = [@split.name.capitalize]
   end
 
 

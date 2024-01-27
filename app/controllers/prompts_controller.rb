@@ -3,6 +3,7 @@ class PromptsController < ApplicationController
   # GET /prompts or /prompts.json
   def index
     @pagy, @prompts = pagy(Prompt.all)
+    @splits = [Split.testing.first.name.capitalize, Split.training.first.name.capitalize]
   end
 
   private

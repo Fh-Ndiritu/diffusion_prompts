@@ -102,3 +102,7 @@
 #dataset_splits .active{
   @apply text-red-400 ;
 }
+
+#search input, #search select{
+  border:none
+}
