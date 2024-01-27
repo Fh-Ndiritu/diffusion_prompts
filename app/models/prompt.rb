@@ -3,6 +3,7 @@ class Prompt < ApplicationRecord
   validates :row_idx, presence: true,  numericality: {only_interger: true}
   validates :content, presence: true 
 
+  extend Pagy::Searchkick
   searchkick
 
   after_save_commit :reindex_search

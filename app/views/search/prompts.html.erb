@@ -1,11 +1,9 @@
-<%= turbo_stream.replace "prompts" do %>
     <%= turbo_frame_tag "prompts" do %>
         <% if @prompts.empty? %>
         <div id="prompts" class="flex bg-slate-300 rounded my-4 w-full text-center justify-center items-center">
             <h4>No results found :(</h4>
         </div>
         <% else %>
-              <h2 class="font-bold text-sm text-center my-2 text-gray-900">Found <%= @pagy.count %> results</h2>
             <div id="prompts" class="min-w-full overflow-y-scroll rounded-lg bg-slate-300 border-4 border-slate-300  p-4 my-4">
                 <%= render @prompts %>
             </div>
@@ -15,4 +13,3 @@
         <% end %>
         
     <% end %>
-<% end %>

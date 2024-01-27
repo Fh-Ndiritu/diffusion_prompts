@@ -62,6 +62,7 @@ RSpec.feature "Search", type: :feature do
 
             create(:prompt, split: train2, content: "This is training set2")
             create(:prompt, split: test2, content: "This is testing set2")
+            Prompt.reindex
 
             visit(prompts_path)
             fill_in 'query', with: 'training'

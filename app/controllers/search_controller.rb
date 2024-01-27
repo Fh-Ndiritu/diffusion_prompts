@@ -4,14 +4,14 @@ class SearchController < ApplicationController
         
         if prompts_params[:query].empty?
             @pagy, @prompts = pagy(Prompt.all)
-        elsif @current_split
-           @pagy, @prompts = pagy(Prompt.search(
-                prompts_params[:query], 
-                where: {split_id: @current_split.id}
-            ))
-        else
-            @pagy, @prompts = pagy(Prompt.search(prompts_params[:query] ))
+        else   
+            collection = @current_split ?  
+            Prompt.pagy_search(prompts_params[:query], where: {split_id: @current_split.id})
+            : Prompt.pagy_search(prompts_params[:query])
+            
+            @pagy, @prompts = pagy_searchkick(collection)
         end
+
 
         respond_to do |format|
            format.html 
@@ -24,8 +24,9 @@ class SearchController < ApplicationController
     private
 
     def set_split
-        return if params[:split]&.empty?
-        @current_split = Split.find(params[:split])
+        if params[:split].present?
+            @current_split = Split.find(params[:split])
+        end
     end
 
     def prompts_params 
