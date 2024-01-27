@@ -11,6 +11,7 @@ RSpec.feature "Search", type: :feature do
 
         create(:prompt, split: train_split, content: "Some info in a training set")
         create(:prompt, split: test_split, content: "More data in a testing set")
+        Prompt.reindex
     end
         
     describe "user searches prompts within dataset" do 
@@ -25,28 +26,28 @@ RSpec.feature "Search", type: :feature do
             expect(page).to have_content("Some info in a training set")
         end
 
-        scenario 'returns only scoped matches if split is selected' do 
+        scenario 'returns only scoped matches if split is selected', js: true do 
             fill_in 'query', with: 'set'
-            select 'Training', from: 'split'
-             click_button 'Search'
+            select 'train', from: 'split'
+            click_button 'Search'
             expect(page).to have_content("Some info in a training set")
             expect(page).not_to have_content("More data in a testing set")
         end
     end
 
     describe 'scopes search to navigated split' do 
-        scenario 'user searches within training split' do 
-             visit split_path(train_split)
+        scenario 'user searches within training split', js: true do 
+            visit split_path(train_split)
             fill_in 'query', with: 'set'
-             click_button 'Search'
+            click_button 'Search'
             expect(page).to have_content("Some info in a training set")
             expect(page).not_to have_content("More data in a testing set")
         end
 
-         scenario 'user searches within testing split' do 
-             visit split_path(test_split)
+         scenario 'user searches within testing split', js: true do 
+            visit split_path(test_split)
             fill_in 'query', with: 'set'
-             click_button 'Search'
+            click_button 'Search'
             expect(page).not_to have_content("Some info in a training set")
             expect(page).to have_content("More data in a testing set")
         end   

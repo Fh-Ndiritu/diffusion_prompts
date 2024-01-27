@@ -37,7 +37,7 @@ RSpec.feature 'Dataset',  type: :feature do
         end
 
         it 'changes prompts when splits are clicked'  do 
-            find("a", text: "Testing data").click
+            find("a", text: "Testing").click
             expect(page).to have_text(test_split.prompts.first.content)
             expect(page).not_to have_text(train_split.prompts.first.content)
         end

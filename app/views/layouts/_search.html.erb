@@ -1,9 +1,9 @@
 <!-- component -->
 <!-- Creacte By Joker Banny -->
 <div class="flex justify-center items-center" id="search">
-	<div class="container mx-auto w-3/5  rounded-lg border border-indigo-300">
+	<div class="container mx-auto w-4/5 lg:w-3/5  rounded-lg border border-indigo-300">
 
-    <%= form_with(url: search_prompts_url, method: :get, html: {autocomplete: 'off'}, class: "sm:flex items-center bg-white rounded-lg overflow-hidden px-2 py-1 justify-between") do |form| %>
+    <%= form_with(url: search_prompts_url, method: :get, data: {turbo_stream: true},  html: {autocomplete: 'off'}, class: "sm:flex items-center bg-white rounded-lg overflow-hidden px-2 py-1 justify-between") do |form| %>
         <%= form.text_field :query, class: "text-base text-gray-400 flex-grow outline-none px-2 rounded-lg bg-gray-100", placeholder: "Search" %>
         <% if @splits.present? %>
             <% if @splits.count ==1 %>
