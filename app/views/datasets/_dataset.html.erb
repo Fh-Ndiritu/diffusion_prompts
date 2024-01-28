@@ -1,0 +1,16 @@
+<%= link_to dataset_path(dataset), data: {turbo: false} do %>
+  <div class="relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md hover:bg-green-50">
+  <div class="p-6">
+    <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+      <%= dataset.name %>
+    </h5>
+    <span class="float-right absolute top-1 right-2 uppercase text-xs font-bold">size: <span class="capitalize font-normal"><%= dataset.prompts.count %> prompts</span></span>
+      <span class="uppercase text-xs font-bold">Language: <span class="capitalize font-normal"><%= dataset.language %></span></span>
+      <span class="block uppercase text-xs font-bold">Splits: 
+          <% dataset.splits.each do |split| %>
+            <span class="capitalize font-normal"><%= split.name %></span>
+          <% end %>
+      </span>
+  </div>
+</div>
+<% end %>

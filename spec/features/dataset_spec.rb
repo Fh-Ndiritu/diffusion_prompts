@@ -42,10 +42,22 @@ RSpec.feature 'Dataset',  type: :feature do
             expect(page).not_to have_text(train_split.prompts.first.content)
         end
 
+    end
 
 
+    describe 'can have more than one dataset' do 
+        it "shows multiple datasets", focus: do 
+            set1 = create(:dataset, name: "Set One")
+            set2  = create(:dataset, name: "Set Two")
+            visit datasets_path
 
+            expect(page).to have_text("Set One")
+            expect(page).to have_text("Set Two")
 
+            visit dataset_path(set1)
+            expect(page).to have_text("Set One")
+            expect(page).not_to have_text("Set Two")
+        end
     end
 
 end

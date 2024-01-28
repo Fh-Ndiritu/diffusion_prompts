@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
   get 'split/:id', to: "split#show", as: :split
-  get 'dataset/:id', to: "dataset#show", as: :dataset
+  get 'dataset/:id', to: "datasets#show", as: :dataset
+  get 'datasets', to: 'datasets#index', as: :datasets
 
   get 'search_prompts', to: "search#prompts", as: :search_prompts
   resources :prompts, only: [:index]
@@ -12,5 +13,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "prompts#index"
+  root "datasets#index"
 end
