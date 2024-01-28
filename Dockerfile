@@ -41,7 +41,7 @@ CMD ["bash"]
 
 ###############################################################################
 
-FROM ruby:3.3.0-slim-bookworm AS app
+FROM ruby:3.2.2-slim-bookworm AS app
 
 WORKDIR /app
 
@@ -70,8 +70,9 @@ COPY --chown=ruby:ruby --from=assets /usr/local/bundle /usr/local/bundle
 COPY --chown=ruby:ruby --from=assets /app/public /public
 COPY --chown=ruby:ruby . .
 
+RUN chmod +x /app/bin/docker-entrypoint-web
 ENTRYPOINT ["/app/bin/docker-entrypoint-web"]
 
 EXPOSE 8000
 
-CMD ["rails", "s", "-b", "0.0.0.0"]
+CMD ["rails", "s"]

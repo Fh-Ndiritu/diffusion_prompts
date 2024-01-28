@@ -1,0 +1,12 @@
+{
+  "name": "diffusion_prompts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Fh-Ndiritu/diffusion_prompts.git",
+  "author": "Fh Ndiritu <fhndiritu@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build:css": "tailwindcss build ./app/assets/stylesheets/application.css -o ./public/assets/application.css",
+    "watch:css": "tailwindcss -i ./app/assets/stylesheets/application.css -o ./public/assets/application.css --watch"
+  }
+}
