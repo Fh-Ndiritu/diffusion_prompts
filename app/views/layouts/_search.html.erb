@@ -1,10 +1,10 @@
 <!-- component -->
 <!-- Creacte By Joker Banny -->
-<div class="flex justify-center items-center" id="search">
+<div class="flex justify-center items-center" id="search" data-controller="search">
 	<div class="container mx-auto w-4/5 lg:w-3/5  rounded-lg border border-indigo-300">
 
-    <%= form_with(url: search_prompts_url, method: :get, data: {turbo_stream: true},  html: {autocomplete: 'off'}, class: "sm:flex items-center bg-white rounded-lg overflow-hidden px-2 py-1 justify-between") do |form| %>
-        <%= form.text_field :query, class: "text-base text-gray-400 flex-grow outline-none px-2 rounded-lg bg-gray-100", placeholder: "Search" %>
+    <%= form_with(url: search_prompts_url, method: :get, data: {turbo_stream: true}, html: {autocomplete: 'off'}, class: "sm:flex items-center bg-white rounded-lg overflow-hidden px-2 py-1 justify-between") do |form| %>
+        <%= form.text_field :query, class: "text-base text-gray-400 flex-grow outline-none px-2 rounded-lg bg-gray-100", placeholder: "Search", data: {action: "search#queryChange"} %>
         <% if @splits.present? %>
             <% if @splits.count ==1 %>
                 <div class="ms:flex items-center px-2 rounded-lg space-x-4 mx-auto ">
@@ -18,7 +18,7 @@
 
         <% end %>
 
-        <%= form.submit "Search", class: " cursor-pointer bg-indigo-800 text-white text-base rounded-lg px-4 py-2 font-thin" %>
+        <%= form.submit "Search", class: "submit cursor-pointer bg-indigo-800 text-white text-base rounded-lg px-4 py-2 font-thin", data: { search_target: "submit" }%>
 
     <% end %>
 	</div>
