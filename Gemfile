@@ -80,3 +80,8 @@ gem "pagy", "~> 6.4"
 gem "elasticsearch", "< 7.14"
 
 gem "searchkick", "~> 5.3"
+
+group :production do 
+  gem "bonsai-searchkick", "~> 0.0.1"
+end
+
