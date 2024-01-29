@@ -18,34 +18,9 @@ namespace :huggingface do
     exit unless dataset.save 
     dataset.splits.find_or_create_by(name: "test")
     dataset.splits.find_or_create_by(name: "train")
-
-    dataset.splits.each do |split|
-      read_csv(split)
-    end
+    LoadHfPromptsJob.perform_later(dataset)
 
   end
 
-
-  def read_csv(split)
-    p split
-    puts "filling #{split.name} prompts"
-    require 'csv'
-    assets_directory = File.join( File.dirname(__FILE__), '../', 'assets')
-    prompt_file_path = File.join(assets_directory, "#{split.name}.csv")
-    if File.exist?(prompt_file_path)
-      csv_data = CSV.read(prompt_file_path, headers: true)
-
-      csv_data.each do |row|
-        puts "writing prompt #{row["Row_idx"]}"
-        split.prompts.create(
-            row_idx: row["Row_idx"], 
-            content: row["Prompt"], 
-        )
-      end
-
-      puts 'CSV data read successfully!'
-    end
-
-  end
 end
   
