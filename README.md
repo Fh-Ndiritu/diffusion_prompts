@@ -1,24 +1,21 @@
-# README
+# Searching Prompts
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## SETUP
+1. Clone Repo
+2. setup .env(from env.example)
+3. docker compose up --build
+4. ./run rails db:setup
+5. accesible on https://localhost:8000/
 
-Things you may want to cover:
+# TESTING
+./run rspec 
 
-* Ruby version
+## Stack: 
+1. Rails 7.1.2
+2. Ruby 3.2.2
+3. Postgresql
+4. Docker
+5. Elasticsearch
+6. Rspec
+7. Capybara/Selenium
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
