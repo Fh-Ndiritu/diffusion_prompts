@@ -11,9 +11,9 @@ x-app: &default-app
     postgres:
       condition: "service_started"
       required: false
-    # redis:
-    #   condition: "service_started"
-    #   required: false
+      # redis:
+      #   condition: "service_started"
+      #   required: false
   env_file:
     - ".env"
   restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
@@ -88,7 +88,7 @@ services:
       - "${DOCKER_WEB_PORT_FORWARD:-127.0.0.1:8000}:${PORT:-8000}"
     profiles: [ "web" ]
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
     environment:
       - cluster.name=docker-cluster
       - bootstrap.memory_lock=true
@@ -97,12 +97,13 @@ services:
       - xpack.monitoring.enabled=false
       - xpack.graph.enabled=false
       - xpack.watcher.enabled=false
+      - discovery.type=single-node
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
-      - ./docker_data/elasticsearch/data:/usr/share/elasticsearch/data
+      - ./docker_data/elasticsearch/data:/var/lib/elasticsearch/data
     ports:
       - 9200:9200
   # worker:

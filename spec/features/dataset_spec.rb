@@ -45,8 +45,8 @@ RSpec.feature 'Dataset',  type: :feature do
     end
 
 
-    describe 'can have more than one dataset' do 
-        it "shows multiple datasets", focus: do 
+    describe 'can have more than one dataset'  do 
+        it "shows multiple datasets" do 
             set1 = create(:dataset, name: "Set One")
             set2  = create(:dataset, name: "Set Two")
             visit datasets_path

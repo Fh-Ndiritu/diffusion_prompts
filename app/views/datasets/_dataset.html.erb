@@ -1,5 +1,5 @@
-<%= link_to dataset_path(dataset), data: {turbo: false} do %>
-  <div class="relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md hover:bg-green-50">
+<%= link_to dataset_path(dataset), data: {turbo: false}, class:"relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md hover:bg-green-50 my-2" do %>
+  <div >
   <div class="p-6">
     <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
       <%= dataset.name %>

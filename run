@@ -50,6 +50,18 @@ function test {
   _dc -e "RAILS_ENV=test" js bash -c "${test_command}"
 }
 
+function rspec() {
+  local run_build="${1:-}"
+  local test_command="bundle exec rspec"
+
+  if [ "${run_build}" = "-b" ]; then
+    test_command="yarn build && yarn build:css && ${test_command}"
+  fi
+
+  _dc -e  run web bash -c "RAILS_ENV=test ${test_command}"
+}
+
+
 function shell {
   # Start a shell session in the web container
   cmd bash "${@}"

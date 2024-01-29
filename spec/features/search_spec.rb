@@ -26,7 +26,7 @@ RSpec.feature "Search", type: :feature do
             expect(page).to have_content("Some info in a training set")
         end
 
-        scenario 'returns only scoped matches if split is selected', js: true do 
+        scenario 'returns only scoped matches if split is selected', js: true  do 
             fill_in 'query', with: 'set'
             select 'train', from: 'split'
             click_button 'Search'

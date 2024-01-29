@@ -27,6 +27,7 @@ namespace :huggingface do
 
 
   def read_csv(split)
+    p split
     puts "filling #{split.name} prompts"
     require 'csv'
     assets_directory = File.join( File.dirname(__FILE__), '../', 'assets')

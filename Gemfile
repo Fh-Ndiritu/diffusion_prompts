@@ -77,6 +77,6 @@ end
 
 gem "pagy", "~> 6.4"
 
-gem "elasticsearch", "~> 8.12"
+gem "elasticsearch", "< 7.14"
 
 gem "searchkick", "~> 5.3"
